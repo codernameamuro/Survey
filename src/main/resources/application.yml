@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: survey
+    password: kdh
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+mybatis:
+  mapper-locations: classpath*:/mybatis/mapper/**/*.xml
+
+
