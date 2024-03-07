@@ -9,4 +9,7 @@ import java.sql.SQLException;
 public interface MemberMapper {
 
     public void insertMember(Member dto) throws SQLException;
+    public Integer loginByCount(Member dto) throws SQLException;
+
+    public String findById(String id) throws SQLException;
 }

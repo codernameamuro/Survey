@@ -16,4 +16,22 @@ public class MemberServiceImpl implements MemberService {
 
         mapper.insertMember(dto);
     }
+
+    @Override
+    public Boolean login(Member dto) throws Exception {
+        if(mapper.loginByCount(dto) ==1 ){
+            return true;
+        } else {
+            return  false;
+        }
+
+    }
+
+    @Override
+    public String findById(String id) throws Exception {
+        String password = null;
+        password = mapper.findById(id);
+
+        return password;
+    }
 }

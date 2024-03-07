@@ -6,5 +6,11 @@
         INSERT INTO member (userNum, userId, userPwd, userEmail)
         VALUES (userNum_seq.NEXTVAL, #{id}, #{password}, #{email})
     </insert>
+    <select id="findById" resultType="java.lang.String">
+        SELECT userPwd FROM member WHERE userId=#{id}
+    </select>
+    <select id="loginByCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM member WHERE userId=#{id} AND userPwd=#{password}
+    </select>
 
 </mapper>
