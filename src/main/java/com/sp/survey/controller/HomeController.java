@@ -35,15 +35,17 @@ public class HomeController {
         return "member/login";
     }
 
-    @PostMapping("/member/login")
-    public String memberloginConfirm(@RequestBody Member dto,
+    @PostMapping("/member/loginConfirm")
+    public String memberLoginConfirm(@RequestParam String id, @RequestParam String password,
                                      Model model,
                                      HttpSession session) throws  Exception{
+        Member dto = new Member();
+        dto.setId(id);
+        System.out.println(dto.getId());
+        dto.setPassword(password);
+        System.out.println(dto.getPassword());
 
-        if (dto==null){
-            model.addAttribute("msg","패스워드 또는 아이디가 없습니다.");
-            return "member/login";
-        } else if (!dto.getPassword().equals(service.findById(dto.getId()))) {
+        if (!dto.getPassword().equals(service.findById(dto.getId()))) {
             model.addAttribute("msg", "패스워드 또는 아이디가 일치하지 않습니다.");
             return "member/login";
         } else{
