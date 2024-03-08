@@ -34,4 +34,12 @@ public class MemberServiceImpl implements MemberService {
 
         return password;
     }
+
+    @Override
+    public String findEmail(String id) throws Exception {
+
+        String email = mapper.findEmail(id);
+
+        return email;
+    }
 }

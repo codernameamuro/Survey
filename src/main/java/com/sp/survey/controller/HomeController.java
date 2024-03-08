@@ -39,6 +39,7 @@ public class HomeController {
     public String memberLoginConfirm(@RequestParam String id, @RequestParam String password,
                                      Model model,
                                      HttpSession session) throws  Exception{
+        System.out.println("isitgoingover?");
         Member dto = new Member();
         dto.setId(id);
         System.out.println(dto.getId());
@@ -48,20 +49,24 @@ public class HomeController {
         if (!dto.getPassword().equals(service.findById(dto.getId()))) {
             model.addAttribute("msg", "패스워드 또는 아이디가 일치하지 않습니다.");
             return "member/login";
-        } else{
-            service.login(dto);
-
         }
-
+        service.login(dto);
+        String email = service.findEmail(dto.getId());
         SessionInfo info = new SessionInfo();
-        info.setEmail(dto.getEmail());
+        info.setEmail(email);
         info.setId(dto.getId());
         info.setPassword(dto.getPassword());
+        String userid=info.getId();
+        System.out.println(info.getEmail());
 
         session.setAttribute("member", info);
+        model.addAttribute("userid", userid);
+        model.addAttribute("info", info);
+        model.addAttribute("test","thymeleaf가 안돼요 ㅜㅜ");
+        System.out.println(userid);
 
 
-        return "home/member";
+        return "redirect:/member";
     }
 
 
@@ -73,6 +78,12 @@ public class HomeController {
 
         service.register(dto);
         return "home/main";
+    }
+
+    @GetMapping("/member/survey")
+    public String memberSurveyForm() throws Exception{
+
+        return "survey/Form";
     }
 
 }

@@ -6,4 +6,5 @@ public interface MemberService {
     public void register(Member dto) throws  Exception;
     public Boolean login(Member dto) throws  Exception;
     public String findById(String id) throws Exception;
+    public String findEmail(String id) throws  Exception;
 }

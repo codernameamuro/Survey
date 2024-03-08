@@ -12,4 +12,5 @@ public interface MemberMapper {
     public Integer loginByCount(Member dto) throws SQLException;
 
     public String findById(String id) throws SQLException;
+    public String findEmail(String id) throws SQLException;
 }

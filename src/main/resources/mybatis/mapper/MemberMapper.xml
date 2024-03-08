@@ -12,5 +12,8 @@
     <select id="loginByCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM member WHERE userId=#{id} AND userPwd=#{password}
     </select>
+    <select id="findEmail" resultType="java.lang.String">
+        SELECT userEmail FROM member WHERE userId=#{id}
+    </select>
 
 </mapper>

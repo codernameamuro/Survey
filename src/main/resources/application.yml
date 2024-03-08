@@ -1,10 +1,10 @@
 server:
   port: 8080
 spring:
-  mvc:
-    view:
-      prefix: classpath:/templates/
-      suffix: .html
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
   datasource:
     url: jdbc:oracle:thin:@localhost:1521/xe
     username: survey
